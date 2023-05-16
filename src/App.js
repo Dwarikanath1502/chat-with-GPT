@@ -31,13 +31,13 @@ const App = () => {
     // set typing indicator
     setTyping(true);
 
-  // process message tof chatGPT
+    // process message tof chatGPT
     await processMessageToChatGPT(newMessages);
 
 
   }
 
- async function  processMessageToChatGPT(chatMessages) {
+  async function processMessageToChatGPT(chatMessages) {
     //  chatMessages {sender: "user" or "chatGPT", messaege: "The message content here"}
     // apiMessages{ role: "user" or "assistant", content: "The message is here"}
 
@@ -72,7 +72,7 @@ const App = () => {
     await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer" + API_KEY,
+        "Authorization": `Bearer ${API_KEY}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(apiRequestBody)
@@ -84,7 +84,7 @@ const App = () => {
       setMessages(
         [...chatMessages, {
           message: data.choices[0].message.content,
-          sender:  "ChatGPT"
+          sender: "ChatGPT"
         }]
       )
       setTyping(false);
