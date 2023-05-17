@@ -3,7 +3,7 @@ import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css'
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 
-const API_KEY = "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"
+const API_KEY = "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"
 
 
 const App = () => {
@@ -11,7 +11,8 @@ const App = () => {
   const [messages, setMessages] = useState([
     {
       message: "I am developed by Dwarikanath. Ask me anything I'll happy to help",
-      sender: "ChatGPT"
+      sender: "ChatGPT",
+      // sentTime: "just now"
     }
   ])
   const [typing, setTyping] = useState(false)
@@ -21,7 +22,7 @@ const App = () => {
       message,
       sender: "user",
       direction: "outgoing"
-    }
+    };
 
     const newMessages = [...messages, newMessage] //all old msg + new msg
 
@@ -83,7 +84,7 @@ const App = () => {
       // console.log(data.choices[0].message.content);
       setMessages(
         [...chatMessages, {
-          message: data.choices[0].message.content,
+          // message: data.choices[0].message.content,
           sender: "ChatGPT"
         }]
       )
@@ -97,7 +98,7 @@ const App = () => {
         <MainContainer>
           <ChatContainer>
             <MessageList
-              typingIndicator={typing ? <TypingIndicator content='Robot is typing...' /> : null}
+              typingIndicator={typing ? <TypingIndicator content='Dwarikanath is typing...' /> : null}
               scrollBehavior='smooth'
             >
               {messages.map((message, index) => {
